@@ -70,3 +70,4 @@ sobrenome = "carvalho"
 print(nome, sobrenome) # gui carvalho
 print(nome, sobrenome, end="...\n") #g ui carvalho...
 print(nome, sobrenome, sep="#") # gui#carvalho
+
