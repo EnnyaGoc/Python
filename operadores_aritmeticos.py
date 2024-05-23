@@ -51,3 +51,25 @@ not "saque 1500" #false
 
 not "" #true
 
+# Operadores de identidade - p comparar se 2 objetos ocupam a mesma posiçao na memoria
+
+curso = "Curso de python"
+nome_curso = curso
+saldo, limite = 200, 200
+
+curso is nome_curso # True
+
+curso is not nome_curso # false
+
+saldo is limite # true
+
+
+# Operadores de associaçao - p verificar se um obj ta presente numa sequencia
+
+curso = "Curso de python"
+frutas = ["laranja","uva","limao"]
+saques = [1500, 100]
+
+"python" in curso #true
+"maça" not in frutas #true
+200 in saques #false
