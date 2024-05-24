@@ -14,6 +14,7 @@ def sacar(valor):
 
 sacar(100)
 
+#------------------------------------------------------
 
 
 #Estruturas Condicionais
@@ -37,6 +38,9 @@ else:
 
 #if ternario
 status = "sucesso" if saldo >= saque else "falha"
+
+
+#------------------------------------------------------
 
 
 # Estrutura de Repetição
@@ -68,3 +72,75 @@ else:
 list(range(4)) #convertendo range p lista p exibir
 # [0, 1, 2, 3]
 
+
+
+#------------------------------------------------------
+
+
+# range com for
+
+for numero in range(0, 11):
+    print(numero, end=" ") #0 1 2 3 4 5 6 7 8 10
+
+
+#tabuada do 5
+for numero in range(0, 51, 5): #de 5 em 5
+    print(numero, end=" ") #0 5 10 15 20 25 30 35 40 45 50
+
+
+
+#------------------------------------------------------
+
+#while
+
+opcao = -1
+
+while opcao != 0:
+    opcao = int(input("[1] para sacar \n[2] extrato \n[0] para sair"))
+    if opcao == 1:
+        print("sacando...")
+    elif opcao == 2:
+        print("exibindo extrato...")
+
+
+#while com for
+
+opcao = -1
+
+while opcao != 0:
+    opcao = int(input("[1] para sacar \n[2] extrato \n[0] para sair"))
+    if opcao == 1:
+        print("sacando...")
+    elif opcao == 2:
+        print("exibindo extrato...")
+
+else:
+    print("obg, volte sempre!")
+
+
+#break
+
+while True: #condiçao q sempre vai ser atendida
+    numero = int(input("[digite um numero"))
+
+    if numero == 10:
+        break
+
+    print(numero)
+
+
+for numero in range(100):
+
+    if numero == 12:
+        break #corta a execuçao
+
+    print(numero, end=" ")
+
+
+
+for numero in range(100):
+
+    if numero == 12:
+        continue #exibe todos nmenos o 12
+
+    print(numero, end=" ")
