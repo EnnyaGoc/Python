@@ -66,3 +66,7 @@ exibir_poema("sexta feira, 16 de ago de 2022","zen of python", "beautiful is bet
 
 # ele sabe q é uma tupla poisé fornecido por ,
 # sabe q é kwargs pois é chave valor
+
+
+
+# parametros especiais -> parametro por nome ou por posiçao ou pelos 2
