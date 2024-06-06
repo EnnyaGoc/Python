@@ -64,9 +64,63 @@ def exibir_poema(data_extenso, *args, **kwargs):
 
 exibir_poema("sexta feira, 16 de ago de 2022","zen of python", "beautiful is better than ugly", autor="tim peters", ano=1999)
 
-# ele sabe q é uma tupla poisé fornecido por ,
+# ele sabe q é uma tupla pois é fornecido por ,
 # sabe q é kwargs pois é chave valor
 
 
+#------------------------------------------------------------------------
 
 # parametros especiais -> parametro por nome ou por posiçao ou pelos 2
+# antes da barra é por posiçao, dps dela n é obrigatorio ser por posiçao
+# dps do * é só por palavra(keyword)
+# entre a / e * pode ser 1 ou outro
+
+# só por posição
+
+def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
+
+criar_carro("palio", 1999, "abc-1234", marca="fiat", motor="1.0", combustivel="gasolina") #valido
+
+criar_carro(modelo="palio", ano=1999, placa="abc-1234", marca="fiat", motor="1.0", combustivel="gasolina") #invalido
+
+
+
+
+# só por keyword
+
+def criar_carro(*, modelo, ano, placa, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
+
+criar_carro(modelo="palio", ano=1999, placa="abc-1234", marca="fiat", motor="1.0", combustivel="gasolina") #valido    
+
+criar_carro("palio", 1999, "abc-1234", marca="fiat", motor="1.0", combustivel="gasolina") #invalido
+
+
+
+
+# híbrido
+
+def criar_carro(modelo, ano, placa, /, marca, *, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
+
+criar_carro("palio", 1999, "abc-1234", marca="fiat", motor="1.0", combustivel="gasolina") #valido (marca="fiat" ou "fiat")
+
+criar_carro(modelo="palio", ano=1999, placa="abc-1234", marca="fiat", motor="1.0", combustivel="gasolina") #invalido
+
+
+
+
+# objetos de primeira classe - pode ser passado por parametro, retornado pela funçao ou atribuido a variavel. ex: string
+
+
+
+
+
+
+
+
+
+
+
+#escopo local e global - p usar objetos q estao em um escopo local, usa  a palavra global
