@@ -1,4 +1,4 @@
-#Maiuscula, minuscuta e title
+#Maiuscula, minuscula e title
 
 curso = "pYtHon"
 

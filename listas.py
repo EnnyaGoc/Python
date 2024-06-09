@@ -92,7 +92,7 @@ for indice, carro in enumerate(carros):  #indice é o contador e o carro é o it
     quadrado = [numero ** 2 for numero in numeros]
 
 
-#--------------------------------------------------------------------
+#---------------------------------------------------------------------
 
 #Metodos da lista
 
@@ -230,4 +230,4 @@ linguagens = ["python", "js", "c", "java", "csharp"]
 
 sorted(linguagens, key=lambda x: len(x)) # ["c", "js", "java", "python", "csharp"]
 
-sorted(linguagens, key=lambda x: len(x), reverse=True) # ["python", "csharp", "java", "js", "c"]
+sorted(linguagens, key=lambda x: len(x), reverse=True) # ["python", "csharp", "java", "js", "c"] 
