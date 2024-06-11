@@ -18,3 +18,5 @@ class B:
 
 class C(A, B):    
     pass
+
+
