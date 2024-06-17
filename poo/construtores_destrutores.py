@@ -6,7 +6,7 @@ class Cachorro:
         self.cor = cor
         self.acordado = acordado
 
-#metodo destrutor - sempre executado qndo uma instancioa é destruída(__del__)
+#metodo destrutor - sempre executado qndo uma instancia é destruída(__del__)
 
     def __del__(self):
         print("destruindo a instancia")
