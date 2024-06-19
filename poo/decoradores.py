@@ -21,14 +21,59 @@ print(executar(mensagem_longa, "ana"))
 
 #Inner functions - funçoes internas, funçoes q sao definidas dentro de outras funçoes
 
+def principal():
+    print("executando a funçao principal")
+
+    def funcao_interna():
+        print("execuntancdo a funçao interna")
+
+    def funcao_2():
+        print("executando a funçao 2")
+
+    funcao_interna()
+    funcao_2()
+
+principal()
 
 
 
 
 #Vc tb pode usar funçoes como valores de retorno
 
+def calculadora(operacao):
+    def soma(a, b):
+        return a + b
+    
+    def sub(a, b):
+        return a - b
+    
+    def mul(a, b):
+        return a * b
 
+    def div(a, b):
+        return a / b
+    
 
+    match operacao:
+        case "+":
+            return soma
+        case "-":
+            return sub
+        case "*":
+            return mul
+        case "/":
+            return div
+        
+    
+op = calculadora("+")
+print(op(2, 2))
+op = calculadora("-")
+print(op(2, 2))
+op = calculadora("*")
+print(op(2, 2))
+op = calculadora("/")
+print(op(2, 2))
+    
 
 
 
