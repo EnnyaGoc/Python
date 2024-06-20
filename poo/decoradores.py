@@ -73,16 +73,34 @@ op = calculadora("*")
 print(op(2, 2))
 op = calculadora("/")
 print(op(2, 2))
-    
 
 
 
 
+#Decorador simples - junçao dos 2
+
+def meu_decorador(funcao):
+    def envelope():
+        print("faz algo antes de executar")
+        funcao()
+        print("faz algo depois de executar")
+
+    return envelope
 
 
+def ola_mundo():
+    print("ola mundo!")
 
 
+ola_mundo = meu_decorador(ola_mundo)
+ola_mundo()
 
 
+#usando o açucar sintatico
 
-# 
+#@meu_decorador
+#def ola_mundo():
+    #print("ola mundo!")
+
+
+#ola_mundo()
