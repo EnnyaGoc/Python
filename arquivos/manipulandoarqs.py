@@ -72,3 +72,33 @@ arquivo.write("escrevendo dados em um novo arquivo")
 #writeLines escreve uma letra/palavra por vez
 arquivo.writelines(["\n", "escrevendo", "\n", "um", "\n", "novo", "\n", "texto"])
 arquivo.close()
+
+
+
+#------------------------------------------------------------------------
+#Gerenciando arquivos e diretórios
+
+#da pra criar, renomear e excluir arqs e dirs usando os modulos 'os' e 'shutil'
+
+import os
+import shutil
+from pathlib import Path
+
+#pathlib serve pra vc pegar a pasta automaticamente, sem precisar escrever o caminho
+
+ROOT_PATH = Path(__file__).parent
+
+os.mkdir(ROOT_PATH / "novo-diretorio") #cria uma pasta na pasta pai
+
+#criando arq
+arquivo = open(ROOT_PATH / "novo.txt", "w")
+arquivo.close()
+
+#renomeando
+os.rename(ROOT_PATH / "novo.txt", ROOT_PATH / "alterado.txt")
+
+#removendo
+os.remove(ROOT_PATH / "alterado.txt")
+
+#movendo de um diretorio p outro
+shutil.move(ROOT_PATH / "novo.txt", ROOT_PATH / "novo-diretorio" / "novo.txt")
