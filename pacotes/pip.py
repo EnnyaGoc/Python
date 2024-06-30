@@ -39,7 +39,7 @@
 
 #-------------------------------------------------------------
 
-#poetry - ourta q permite declarar bibliotecas q seu proj depende e gerencia elas p vc
+#poetry - outra q permite declarar bibliotecas q seu proj depende e gerencia elas p vc
 
 #pip install poetry
 #poetry new myproject

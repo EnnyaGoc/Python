@@ -13,7 +13,7 @@
 
 
 
-#ferramente q format automaticamente
+#ferramente q formata automaticamente
 #Black
 
 #pip install black

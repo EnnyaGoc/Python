@@ -1,0 +1,14 @@
+DQL - linguagem de consulta de dados
+    SELECT
+
+DML - linguagem de manipulaçao de dados
+    INSERT, UPDATE, DELETE
+
+DDL - linguagem de definiçao de dados
+    CREATE, ALTER, DROP
+
+DCL - linguagem de controle de dados
+    GRANT, REVOKE
+
+DTL - linguagem de transaçao de dados
+    BEGIN, COMMITE, ROLLBACK
