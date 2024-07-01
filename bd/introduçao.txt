@@ -12,3 +12,187 @@ DCL - linguagem de controle de dados
 
 DTL - linguagem de transaçao de dados
     BEGIN, COMMITE, ROLLBACK
+
+
+
+https://app.quickdatabasediagrams.com/#/
+
+
+
+        CREATE
+
+CREATE TABLE usuarios (
+    id INT,
+    nome VARCHAR(255) NOT NULL COMMENT 'Nome do usuário',
+    email VARCHAR(100) NOT NULL UNIQUE COMMENT 'Email do usuario',
+    endereco VARCHAR(50) NOT NULL COMMENT 'Endereço do usuario',
+    data_nascimento DATE NOT NULL COMMENT 'Data de nascimento do usuario'
+);
+
+
+
+viagens é o database
+
+CREATE TABLE viagens.destinos (
+    id INT,
+    nome VARCHAR(255) NOT NULL COMMENT 'Nome do destino',
+    descricao VARCHAR(100) NOT NULL COMMENT 'Descriçao do usuario'
+);
+
+
+CREATE TABLE viagens.reservas (
+    id INT COMMENT 'Identificador unico da reserva',
+    id_usuario INT COMMENT 'Referencia ao ID do usuario q fez a reserva',
+    id_destino INT COMMENT 'Referencia ao ID do destino da reserva',
+    data DATE COMMENT 'Data da reserva',
+    status VARCHAR(255) DEFAULT 'pendente' COMMENT 'Status da reserva(confirmada, pendende, cancelada, etc)'
+);
+
+
+
+        INSERT
+
+INSERT INTO viagens.usuarios (id, nome, email, data_nascimento, endereco) VALUES 
+(1, 'João Silva', 'joao@example.com', '1990-05-15', 'Rua A, 123, Cidade X, Estado Y'),
+(1, 'Ana', 'teste@teste.com', '1998-02-10', 'Avenida C, 789, Cidade X, Estado Y'),
+(2, 'Maria Santos', 'maria@example.com', '1985-08-22', 'Rua B, 456, Cidade Y, Estado Z'),
+(3, 'Pedro Souza', 'pedro@example.com', '1998-02-10', 'Avenida C, 789, Cidade X, Estado Y');
+
+
+INSERT INTO viagens.destinos (id, nome, descricao) VALUES 
+(1, 'Praia das Tartarugas', 'Uma bela praia com areias brancas e mar cristalino'),
+(2, 'Cachoeira do Vale Verde', 'Uma cachoeira exuberante cercada por natureza'),
+(3, 'Cidade Histórica de Pedra Alta', 'Uma cidade rica em história e arquitetura'),
+(4, 'Praia do Rosa', 'Uma bela praia com areias brancas e mar cristalino');
+
+
+INSERT INTO viagens.reservas (id, id_usuario, id_destino, data, status) VALUES 
+(1, 1, 2, '2023-07-10', 'confirmada'),
+(2, 2, 1, '2023-08-05', 'pendente'),
+(3, 3, 3, '2023-09-20', 'cancelada');
+
+
+
+        SELECT
+
+-- Selecionar todos os registros da tabela "usuarios"
+SELECT * FROM usuarios;
+
+
+-- Selecionar apenas o nome e o email dos usuários
+SELECT nome, email FROM usuarios;
+
+
+-- Selecionar os usuários que possuem o nome "João Silva"
+SELECT * FROM usuarios WHERE nome = 'João Silva';
+
+
+-- Selecionar os usuários que nasceram antes de uma determinada data
+SELECT * FROM usuarios WHERE data_nascimento < '1990-01-01';
+
+
+-- Like
+SELECT * FROM usuarios WHERE nome LIKE '%Silva%';
+SELECT * FROM usuarios WHERE nome LIKE 'Jo_o%';
+
+
+
+        UPDATE
+
+UPDATE usuarios
+SET id = 4
+WHERE email = "teste@teste.com";
+
+
+
+        DELETE
+
+DELETE FROM destinos
+WHERE nome = "Praia do Rosa";
+
+
+
+        ALTER TABLE
+
+Mudando os dados(jeito mais dificil)
+* Migrando os dados de uma tabela para outra
+
+    - Criando a tabela
+CREATE TABLE usuarios_nova (
+    id INT,
+    nome VARCHAR(255) NOT NULL COMMENT 'Nome do usuário',
+    email VARCHAR(100) NOT NULL UNIQUE COMMENT 'Email do usuario',
+    endereco VARCHAR(100) NOT NULL COMMENT 'Endereço do usuario',
+    data_nascimento DATE NOT NULL COMMENT 'Data de nascimento do usuario'
+);
+
+    - Passando os dados
+INSERT INTO usuarios_nova (id, nome, email, data_nascimento, endereco) 
+SELECT id, nome, email, data_nascimento, endereco
+FROM usuarios;
+
+    - Excluindo a antiga( DROP TABLE - exclui a tabela permanentemente)
+DROP TABLE usuarios;
+
+    - Renomeando a nova
+ALTER TABLE usuarios_nova RENAME usuarios;
+
+
+
+Mudando os dados(jeito mais simples)
+* Alterando o tipo da coluna
+
+ALTER TABLE usuarios MODIFY COLUMN endereco VARCHAR(150);
+
+
+
+
+
+
+
+
+
+CHAVE PRIMÁRIA 
+
+- Transformando o id em chave primária
+ALTER TABLE usuarios
+MODIFY COLUMN id INT AUTO_INCREMENT,
+ADD PRIMARY KEY (ID);
+
+ALTER TABLE destinos
+MODIFY COLUMN id INT AUTO_INCREMENT,
+ADD PRIMARY KEY (ID);
+
+ALTER TABLE reservas
+MODIFY COLUMN id INT AUTO_INCREMENT,
+ADD PRIMARY KEY (ID);
+
+
+
+
+CHAVE ESTRANGEIRA
+
+ALTER TABLE reservas
+ADD CONSTRAINT fk_reservas_usuarios 
+FOREIGN KEY(id_usuario) REFERENCES usuarios(id);
+
+ALTER TABLE reservas
+ADD CONSTRAINT fk_reservas_destinos
+FOREIGN KEY(id_destino) REFERENCES destinos(id);
+
+
+
+Para definir oq acontece com os filhos
+ON DELETE
+ON UPDATE
+CASCADE, SET NULL, SET DEFAULT
+
+ALTER TABLE reservas
+ADD CONSTRAINT fk_usuarios 
+FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
+ON DELETE CASCADE;
+
+
+DELETE FROM usuarios WHERE id = 1;
+
+(se excluiu o usuario com id 1, a reserva dele tb vai ser excluída)
