@@ -1,0 +1,84 @@
+- n segue o modelo de tabelas e relacionamentos
+- alta flexibilidade
+- lida com alto volume de dados
+
+
+Tipos:
+key value, documento, coluna, grafos, etc
+
+
+    MONGODB
+
+MongoDB é baseado em documento
+
+Sao armazenados em documentos BSON (Binary JSON)
+identificador unico é o _id
+é comporto por pares de chaves e valores
+
+
+tipos de dados simples: 
+ string
+ number
+ boolean
+ date
+ null
+ objectid
+
+ tipos de dados complexos: 
+ array
+ documento embutido
+ referencia
+ geoJSON
+
+
+
+ETRUTURA DO DOCUMENTO
+{
+    _id: ObjectId(""),
+    "nome_campo": "valor_campo",
+    ...
+}
+
+
+
+{
+   "_id":1,
+   "nome":"Ana Silva",
+   "idade":"30",
+   "dt_nasc":"1994-05-03",
+   "endereco":"Rua tal, 232...",
+   "enderecos":[
+      {
+         "logradouro":"via tal...",
+         "numero":"432",
+         "bairro":"tal",
+         "cidade":"rj"
+      }
+   ],
+   "interesses":[
+      "kart",
+      "culinaria"
+   ],
+   "reservas":[
+      1,
+      2
+   ]
+}
+
+
+
+
+
+
+{
+   "_id":1,
+   "nome":"Parque tal",
+   "descricao":"Principal parque",
+   "localizacao":{                          #localizacao tipo geoJSON
+      "type":"Point",
+      "coordinates":[
+         -45.654535,
+         -23.6545775
+      ]
+   }
+}
