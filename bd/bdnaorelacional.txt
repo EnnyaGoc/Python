@@ -82,3 +82,49 @@ ETRUTURA DO DOCUMENTO
       ]
    }
 }
+
+
+
+
+         INNER documents 
+Dados armazenados juntos em um unico doc, em vez de serem distribuídos em varias coleçoes
+
+
+{
+   "_id":1,
+   "nome":"Ana Silva",
+   "idade":"30",
+   "dt_nasc":"1994-05-03",
+   "enderecos":[
+      {
+         "logradouro":"via tal...",
+         "numero":"432",
+         "bairro":"tal",
+         "cidade":"rj"
+      }
+   ],
+   "interesses":[
+      "kart",
+      "culinaria"
+   ],
+   "reservas":[{
+      "data": "2024-04-03",
+      "status": "pendente",
+      "destino": ObjectId("123")
+
+   }
+     
+   ]
+}
+
+
+
+         REFERENCIAS
+
+{
+   "_id": ObjectId("123"),
+   "nome": ObjectId("456"),
+   "data": "2024-04-03",
+   "status": "pendente",
+   "usuario": ObjectId("345")
+}
