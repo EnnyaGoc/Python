@@ -1,7 +1,9 @@
 import requests
 import json
 
-cotacoes = requests.get(" https://economia.awesomeapi.com.br/json/last/:moedas") #pegando o api
+cotacoes = requests.get("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL") #pegando o api
 cotacoes = cotacoes.json() #transformando em formato json
+cotacao_dolar = cotacoes['USDBRL']["bid"]
 print(cotacoes)
+print(cotacao_dolar)
 
